@@ -1,7 +1,7 @@
 # crop-browser
 
 [![Package version](https://flat.badgen.net/npm/v/crop-browser)](https://www.npmjs.com/package/crop-browser)
-[![Package size](https://badgen.net/bundlephobia/minzip/crop-browser)](https://bundlephobia.com/result?p=crop-browser)
+[![Package size](https://flat.badgen.net/bundlephobia/minzip/crop-browser)](https://bundlephobia.com/result?p=crop-browser)
 
 Crop all transparent pixel around an image's edges.
 
