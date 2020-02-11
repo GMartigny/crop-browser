@@ -1,0 +1,51 @@
+{
+    "name": "crop-browser",
+    "version": "0.1.0",
+    "description": "Crop transparent pixel from image in the browser",
+    "keywords": [
+        "trim",
+        "image",
+        "edge",
+        "cut",
+        "resize",
+        "transparent",
+        "opacity",
+        "pixel",
+        "remove"
+    ],
+    "main": "index.js",
+    "scripts": {
+        "test": "ava"
+    },
+    "eslintConfig": {
+        "extends": "@gmartigny/eslint-config"
+    },
+    "ava": {
+        "require": [
+            "esm",
+            "./test/_set-env.js"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GMartigny/crop-browser.git"
+    },
+    "author": "GMartigny",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/GMartigny/crop-browser/issues"
+    },
+    "homepage": "https://github.com/GMartigny/crop-browser#readme",
+    "funding": "https://github.com/GMartigny/crop-browser?sponsor=1",
+    "dependencies": {
+        "crop-universal": "^1.0.0"
+    },
+    "devDependencies": {
+        "@gmartigny/eslint-config": "^1.4.2",
+        "ava": "^3.0.0",
+        "browser-env": "^3.3.0",
+        "canvas": "^2.6.1",
+        "eslint": "^6.8.0",
+        "esm": "^3.2.25"
+    }
+}
