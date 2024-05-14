@@ -40,7 +40,7 @@ const defaultOptions = {
 /**
  * Crop transparent pixels from an image
  * @param {String|HTMLImageElement|HTMLCanvasElement|HTMLVideoElement} input - Path to the image to process or any type supported by `Canvas.prototype.drawImage`
- * @param {Options} options - Some options
+ * @param {Options} [options] - Some options
  * @returns {Promise<HTMLImageElement>}
  */
 export default async (input, options) => {
@@ -49,25 +49,20 @@ export default async (input, options) => {
         ...options,
     };
 
-    // Check outputFormat
     const supportedFormat = ["png", "jpeg"];
     if (!supportedFormat.includes(outputFormat)) {
         const supported = JSON.stringify(supportedFormat);
         throw new Error(`outputFormat should only be one of ${supported}, but "${outputFormat}" was given.`);
     }
 
-    // Do crop
     const canvas = await cropper(input, options);
 
     return new Promise((resolve) => {
         const result = new window.Image();
-        // Create a blob
         canvas.toBlob((blob) => {
-            // Create an URL and set the image property
             const url = window.URL.createObjectURL(blob);
             result.src = url;
 
-            // Clean once the image is loaded
             const cleanup = () => {
                 window.URL.revokeObjectURL(url);
                 result.removeEventListener("load", cleanup);

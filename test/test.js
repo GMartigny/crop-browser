@@ -1,5 +1,5 @@
 import test from "ava";
-import crop from "..";
+import crop from "../index.js";
 
 const run = async (name) => {
     const res = await crop(`file://test/fixtures/${name}.png`);
@@ -21,21 +21,22 @@ test("full", async (t) => {
     t.is(res.height, 100);
 });
 
-test.cb("input canvas", (t) => {
+test("input canvas", async (t) => {
     const canvas = document.createElement("canvas");
     canvas.width = 100;
     canvas.height = 200;
     const context = canvas.getContext("2d");
     context.fillRect(10, 20, 10, 20);
 
-    crop(canvas)
-        .then((res) => {
-            res.addEventListener("load", () => {
-                t.is(res.width, 10);
-                t.is(res.height, 20);
-                t.end();
-            });
+    const res = await crop(canvas);
+
+    await new Promise((resolve) => {
+        res.addEventListener("load", () => {
+            t.is(res.width, 10);
+            t.is(res.height, 20);
+            resolve();
         });
+    });
 });
 
 test("transparent", async (t) => {
